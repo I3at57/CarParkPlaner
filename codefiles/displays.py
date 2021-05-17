@@ -9,10 +9,10 @@ from random import randrange
 # --- Constant delcare ---
 
 PANTEXTSIZE = 100
-PANTEXTCOLOR = PANTEXTCOLOR
+PANTEXTCOLOR = 'white'
 PANCOLOR = 'red'
-BUTTONCOLOR = BUTTONCOLOR
-BUTTONTEXTCOLOR = BUTTONTEXTCOLOR
+BUTTONCOLOR = 'orange'
+BUTTONTEXTCOLOR = 'black'
 
 
 # --- Functions declare ---
@@ -74,7 +74,9 @@ Car Park Planer
 """, fg=PANTEXTCOLOR, background=PANCOLOR, font=PANTEXTSIZE)
 
 # Button declare
-boutQuit = Button(fenMenu1, text='Quit', fg=BUTTONTEXTCOLOR, background=BUTTONCOLOR, command = fenMenu1.destroy)
+boutQuit = Button(
+    fenMenu1, text='Quit', fg=BUTTONTEXTCOLOR, background=BUTTONCOLOR, command = fenMenu1.destroy
+)
 boutHelp = Button(fenMenu1, text='Help', fg=BUTTONTEXTCOLOR, background=BUTTONCOLOR, command = clickHelp)
 boutReserved = Button(fenMenu1, text='Find a place', fg=BUTTONTEXTCOLOR, background=BUTTONCOLOR, command = reserve_place)
 
