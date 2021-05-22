@@ -1,10 +1,38 @@
-# --- Constant for windows displaying---
+"""
+This file contain all the constant in the project
+"""
+###############################################################################
 
+
+# --- Constant for parameters windows displaying---
 PANEL_TEXT_SIZE = 100
 PANEL_TEXT_COLOR = 'white'
 PANEL_COLOR = 'red'
 BUTTON_COLOR = 'orange'
 BUTTON_TEXT_COLOR = 'black'
+
+
+# --- Constant for parameters windows displaying---
+QUIT_BUTTON = 'Quit'
+FIND_PLACE_MENU_BUTTON = 'Find a place'
+HELP_BUTTON = 'Help'
+MENU_BUTTON = 'Menu'
+RETURN_BUTTON = 'Return'
+AVAIBILITY_BUTTON = 'Avaibility'
+
+# --- Constant for name windows ---
+MENU = 'menu'
+HELP = 'help'
+RESV = 'resv'
+AVAI = 'avai'
+
+# --- Const for the place situation ---
+FREE = 'free'
+USE = 'used'
+SITUATION_TAB = [FREE, USE]
+
+###############################################################################
+
 
 LABEL_HELP_WINDOW = """
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,6 +64,18 @@ LABEL_MENU_WINDOW = """
 
 
 Car Park Planer
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""
+
+LABEL_AVAI_WINDOW = """
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The place {} is {}
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
