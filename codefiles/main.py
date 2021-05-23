@@ -21,6 +21,7 @@ AVAILABILITIES = []
 
 # --- All the windows declare ---
 window = Tk()
+window.geometry(WIN_SIZE1)
 
 # --- Label Menu declare ---
 labWelcMenu = Label(
@@ -64,6 +65,12 @@ boutHelp = Button(
     text=HELP_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
     font=PANEL_TEXT_SIZE,
     command=lambda: [pack_all(fenCurrent, bol=False), pack_all(HELP)]
+)
+boutSee = Button(
+    window,
+    text=SEE_PLACE_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
+    font=PANEL_TEXT_SIZE,
+    command=lambda: [pack_all(fenCurrent, bol=False), see_all()]
 )
 
 
@@ -110,6 +117,12 @@ boutReserve = Button(
     font=PANEL_TEXT_SIZE,
     command=lambda: [make_reservation(compt), navigate(-2)]
 )
+boutStopReserve = Button(
+    window,
+    text=UNRESERVE_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
+    font=PANEL_TEXT_SIZE,
+    command=lambda: [make_reservation(compt, bol=False), navigate(-2)]
+)
 
 # --- Label declare ---
 labHelp = Label(
@@ -124,19 +137,22 @@ labAvai = Label(
     textvariable=textVarAvai,
     fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=BUTTON_TEXT_SIZE
 )
-"""
+textVarSee = StringVar()
+textVarSee.set('')
 labParking = Label(
     window,
-    text=LABEL_PARKING_WINDOW.format(*SIGNS, nbr_available()),
+    textvariable=textVarSee,
     fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=PANEL_TEXT_SIZE
 )
-"""
 
 ###############################################################################
 
 
-def make_reservation(slot):
-    AVAILABILITIES[slot] = 1
+def make_reservation(slot, bol=True):
+    if bol:
+        AVAILABILITIES[slot] = 1
+    else:
+        AVAILABILITIES[slot] = 0
 
 
 def read_file():
@@ -185,12 +201,14 @@ def pack_all(win, bol=True):
             boutQuitMenu.pack(side=RIGHT)
             boutHelp.pack(side=RIGHT)
             boutSeePlacesMenu.pack(side=LEFT)
+            boutSee.pack(side=LEFT)
             fenCurrent = MENU
         else:
             labWelcMenu.pack_forget()
             boutQuitMenu.pack_forget()
             boutHelp.pack_forget()
             boutSeePlacesMenu.pack_forget()
+            boutSee.pack_forget()
     elif win == HELP:
         if bol:
             labHelp.pack()
@@ -209,15 +227,20 @@ def pack_all(win, bol=True):
             boutMenuStatic.pack(side=RIGHT)
             if fenPrevious is not None:
                 boutReturnStatic.pack(side=RIGHT)
-            boutHelp.pack(side=RIGHT)
+            if fenPrevious != HELP:
+                boutHelp.pack(side=RIGHT)
             boutGo1.pack(side=LEFT)
             boutMoins10.pack(side=LEFT)
             boutMoins1.pack(side=LEFT)
             boutPlus1.pack(side=LEFT)
             boutPlus10.pack(side=LEFT)
             boutGo100.pack(side=LEFT)
+            print(compt)
+            print(AVAILABILITIES[compt])
             if (AVAILABILITIES[compt] == 0) and (compt != -1):
                 boutReserve.pack(side=LEFT)
+            elif (AVAILABILITIES[compt] == 1) and (compt != -1):
+                boutStopReserve.pack(side=LEFT)
             fenCurrent = AVAI
         else:
             labAvai.pack_forget()
@@ -231,6 +254,24 @@ def pack_all(win, bol=True):
             boutPlus10.pack_forget()
             boutGo100.pack_forget()
             boutReserve.pack_forget()
+            boutStopReserve.pack_forget()
+    elif win == SEEA:
+        if bol:
+            window.geometry(WIN_SIZE2)
+            labParking.pack()
+            boutMenuStatic.pack(side=RIGHT)
+            if fenPrevious != HELP:
+                boutHelp.pack(side=RIGHT)
+            if fenPrevious is not None:
+                boutReturnStatic.pack(side=RIGHT)
+            fenCurrent = SEEA
+        else:
+            window.geometry(WIN_SIZE1)
+            labParking.pack_forget()
+            boutMenuStatic.pack_forget()
+            boutReturnStatic.pack_forget()
+            boutHelp.pack_forget()
+            boutMenuStatic.pack_forget()
 
 
 # --- Functions navigate declare ---
@@ -264,6 +305,18 @@ def navigate(id):
     )
 
     pack_all(AVAI)
+
+
+# --- Functions navigate declare ---
+def see_all():
+
+    SIGNS = []
+    for i in range(len(AVAILABILITIES)):
+        SIGNS.append(DISPLAY_TAB[AVAILABILITIES[i]])
+
+    textVarSee.set(LABEL_PARKING_WINDOW.format(*SIGNS, nbr_available()))
+
+    pack_all(SEEA)
 
 ###############################################################################
 

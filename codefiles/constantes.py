@@ -5,13 +5,15 @@ This file contain all the constant in the project
 
 
 # --- Constant for parameters windows displaying---
-PANEL_TEXT_SIZE = 500
+PANEL_TEXT_SIZE = 3000
 BUTTON_TEXT_SIZE = 500
 PANEL_TEXT_COLOR = 'white'
 PANEL_COLOR = 'blue'
 BUTTON_COLOR = 'pink'
 BUTTON_TEXT_COLOR = 'black'
 
+WIN_SIZE1 = "700x350+400+200"
+WIN_SIZE2 = "700x750+400+0"
 
 # --- Constant for parameters windows displaying---
 QUIT_BUTTON = 'Quit'
@@ -20,18 +22,20 @@ MENU_BUTTON = 'Menu'
 RETURN_BUTTON = 'Return'
 AVAIBILITY_BUTTON = 'Avaibility'
 RESERVE_BUTTON = 'Reserve'
+UNRESERVE_BUTTON = 'Stop Reserving'
 SEE_PLACE_BUTTON = 'See places'
 
 # --- Constant for name windows ---
 MENU = 'menu'
 HELP = 'help'
 AVAI = 'avai'
+SEEA = 'seea'
 
 # --- Const for the place situation ---
 FREE = 'free'
 USE = 'used'
 SITUATION_TAB = [FREE, USE]
-DISPLAY_TAB = ['o', 'x']
+DISPLAY_TAB = ['0', 'X']
 
 ###############################################################################
 
@@ -146,5 +150,4 @@ LABEL_PARKING_WINDOW = """
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 """
