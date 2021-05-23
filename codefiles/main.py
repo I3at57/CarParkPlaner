@@ -117,7 +117,6 @@ labHelp = Label(
     text=LABEL_HELP_WINDOW, fg=PANEL_TEXT_COLOR,
     background=PANEL_COLOR, font=BUTTON_TEXT_SIZE
 )
-
 textVarAvai = StringVar()
 textVarAvai.set(LABEL_AVAI_INTRO)
 labAvai = Label(
@@ -125,6 +124,13 @@ labAvai = Label(
     textvariable=textVarAvai,
     fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=BUTTON_TEXT_SIZE
 )
+"""
+labParking = Label(
+    window,
+    text=LABEL_PARKING_WINDOW.format(*SIGNS, nbr_available()),
+    fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=PANEL_TEXT_SIZE
+)
+"""
 
 ###############################################################################
 
@@ -194,17 +200,6 @@ def pack_all(win, bol=True):
             fenCurrent = HELP
         else:
             labHelp.pack_forget()
-            boutMenuStatic.pack_forget()
-            boutReturnStatic.pack_forget()
-            boutHelp.pack_forget()
-    elif win == RESV:
-        if bol:
-            boutMenuStatic.pack(side=RIGHT)
-            if fenPrevious is not None:
-                boutReturnStatic.pack(side=RIGHT)
-            boutHelp.pack(side=RIGHT)
-            fenCurrent = RESV
-        else:
             boutMenuStatic.pack_forget()
             boutReturnStatic.pack_forget()
             boutHelp.pack_forget()
