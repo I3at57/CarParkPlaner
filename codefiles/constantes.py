@@ -5,15 +5,15 @@ This file contain all the constant in the project
 
 
 # --- Constant for parameters windows displaying---
-PANEL_TEXT_SIZE = 3000
+PANEL_TEXT_SIZE = 200
 BUTTON_TEXT_SIZE = 500
 PANEL_TEXT_COLOR = 'white'
 PANEL_COLOR = 'blue'
 BUTTON_COLOR = 'pink'
 BUTTON_TEXT_COLOR = 'black'
 
-WIN_SIZE1 = "700x350+400+200"
-WIN_SIZE2 = "700x750+400+0"
+WIN_SIZE1 = "700x440+400+200"
+WIN_SIZE2 = "900x1000+400+0"
 
 # --- Constant for parameters windows displaying---
 QUIT_BUTTON = 'Quit'
@@ -115,7 +115,6 @@ See the available places
 LABEL_PARKING_WINDOW = """
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 1	2	3	4	5	6	7	8	9	10
 {}	{}	{}	{}	{}	{}	{}	{}	{}	{}
 
@@ -147,7 +146,6 @@ LABEL_PARKING_WINDOW = """
 {}	{}	{}	{}	{}	{}	{}	{}	{}	{}
 
                                         {} slots are available
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """

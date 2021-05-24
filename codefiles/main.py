@@ -225,7 +225,7 @@ def pack_all(win, bol=True):
         if bol:
             labAvai.pack()
             boutMenuStatic.pack(side=RIGHT)
-            if fenPrevious is not None:
+            if fenPrevious is not None and fenPrevious != AVAI:
                 boutReturnStatic.pack(side=RIGHT)
             if fenPrevious != HELP:
                 boutHelp.pack(side=RIGHT)
