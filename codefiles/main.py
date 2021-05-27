@@ -7,6 +7,7 @@ This files contain all the displays variables and functions.
 
 # --- Import ---
 from tkinter import *
+import tkinter.font
 from constantes import *
 
 # --- Variable for the navigate option ---
@@ -20,107 +21,134 @@ AVAILABILITIES = []
 
 
 # --- All the windows declare ---
-window = Tk()
-window.geometry(WIN_SIZE1)
+window = Tk()   # declare iteration Tk()
+window.geometry(WIN_SIZE1)  # init the size and position of the window
+
+# create the main font of the program
+myFont = tkinter.font.Font(family='Helvetica', size=15)
 
 # --- Label Menu declare ---
 labWelcMenu = Label(
+    """This label is used on the main menu"""
     window, text=LABEL_MENU_WINDOW, fg=PANEL_TEXT_COLOR,
-    background=PANEL_COLOR, font=BUTTON_TEXT_SIZE
+    background=PANEL_COLOR, font=myFont
 )
 
 
 # --- Button Menu declare ---
-boutQuitMenu = Button(
+boutQuitMenuScene = Button(
+    """
+    This button close and delete the window.
+    Only accesible by the menu scene
+    """
     window,
     text=QUIT_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=window.destroy
 )
-boutSeePlacesMenu = Button(
+boutSeePlacesScene = Button(
+    """
+    This button lead to the navigation scene
+    """
     window,
     text=AVAIBILITY_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: [pack_all(MENU, bol=False), pack_all(AVAI)]
+)
+boutSeeAllScene = Button(
+    """
+    This button lead to the sea all scene
+    This one dont pack a new scene, this is done into the see_all() function
+    """
+    window,
+    text=SEE_PLACE_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
+    font=myFont,
+    command=lambda: [pack_all(MENU, bol=False), see_all()]
 )
 
 
 # --- Button static declare ---
 boutMenuStatic = Button(
+    """
+    This button is packed into all scene exept the menu
+    This button lead to the menu scene
+    """
     window,
     text=MENU_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: [pack_all(fenCurrent, bol=False), pack_all(MENU)]
 )
 boutReturnStatic = Button(
+    """
+    The return button allow the user to comme back at the previous scene
+    if the previous was not the menu
+    """
     window,
     text=RETURN_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: [
         pack_all(fenCurrent, bol=False), pack_all(fenPrevious),
     ]
 )
 boutHelp = Button(
+    """
+    Button which lead to the menu scene
+    """
     window,
     text=HELP_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: [pack_all(fenCurrent, bol=False), pack_all(HELP)]
-)
-boutSee = Button(
-    window,
-    text=SEE_PLACE_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
-    command=lambda: [pack_all(fenCurrent, bol=False), see_all()]
 )
 
 
 # --- Button Navigate declare ---
+# All the button linked to the see available scene
 boutGo1 = Button(
     window,
     text=' 1 ', fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: navigate(-1)
 )
 boutMoins10 = Button(
     window,
     text='<<<', fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: navigate(0)
 )
 boutMoins1 = Button(
     window,
     text=' < ', fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: navigate(1)
 )
 boutPlus1 = Button(
     window,
     text=' > ', fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: navigate(2)
 )
 boutPlus10 = Button(
     window,
     text='>>>', fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: navigate(3)
 )
 boutGo100 = Button(
     window,
     text='100', fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: navigate(4)
 )
 boutReserve = Button(
     window,
     text=RESERVE_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: [make_reservation(compt), navigate(-2)]
 )
 boutStopReserve = Button(
     window,
     text=UNRESERVE_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
-    font=PANEL_TEXT_SIZE,
+    font=myFont,
     command=lambda: [make_reservation(compt, bol=False), navigate(-2)]
 )
 
@@ -128,34 +156,31 @@ boutStopReserve = Button(
 labHelp = Label(
     window,
     text=LABEL_HELP_WINDOW, fg=PANEL_TEXT_COLOR,
-    background=PANEL_COLOR, font=BUTTON_TEXT_SIZE
+    background=PANEL_COLOR, font=myFont
 )
 textVarAvai = StringVar()
 textVarAvai.set(LABEL_AVAI_INTRO)
 labAvai = Label(
     window,
     textvariable=textVarAvai,
-    fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=BUTTON_TEXT_SIZE
+    fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=myFont
 )
 textVarSee = StringVar()
 textVarSee.set('')
 labParking = Label(
     window,
     textvariable=textVarSee,
-    fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=PANEL_TEXT_SIZE
+    fg=PANEL_TEXT_COLOR, background=PANEL_COLOR, font=myFont
 )
 
 ###############################################################################
 
 
-def make_reservation(slot, bol=True):
-    if bol:
-        AVAILABILITIES[slot] = 1
-    else:
-        AVAILABILITIES[slot] = 0
-
-
 def read_file():
+    """
+    This function read the txt file and fil with 100 one or zero, according
+    to the available places, the list AVAILABILITIES.
+    """
     f = open('availabilities.txt', 'r')
     lines = f.readlines()
     for line in lines:
@@ -167,7 +192,21 @@ def read_file():
     f.close()
 
 
+def make_reservation(slot, bol=True):
+    """
+    This function change the value of the coresponding slot in AVAILABILITIES
+    depending on the value of bol
+    """
+    if bol:
+        AVAILABILITIES[slot] = 1
+    else:
+        AVAILABILITIES[slot] = 0
+
+
 def save_file():
+    """
+    This function read AVAILABILITIES and modify the .txt in consequence
+    """
     f = open('availabilities.txt', 'w')
     for i in range(len(AVAILABILITIES)):
         print("%d:%d" % (i+1, AVAILABILITIES[i]), file=f)
@@ -175,6 +214,10 @@ def save_file():
 
 
 def nbr_available():
+    """
+    Calculate how many places are currently
+    available in the list AVAILABILITIES
+    """
     count = 0
     for i in AVAILABILITIES:
         if i == 0:
@@ -184,6 +227,10 @@ def nbr_available():
 
 # --- Functions pack declare ---
 def pack_all(win, bol=True):
+    """
+    This function is use to pack or unpack the widget depending on
+    the scene we want.
+    """
 
     global fenCurrent
     global fenPrevious
@@ -197,20 +244,22 @@ def pack_all(win, bol=True):
 
     if win == MENU:
         if bol:
+            window.geometry(WIN_SIZE1)
             labWelcMenu.pack()
-            boutQuitMenu.pack(side=RIGHT)
+            boutQuitMenuScene.pack(side=RIGHT)
             boutHelp.pack(side=RIGHT)
-            boutSeePlacesMenu.pack(side=LEFT)
-            boutSee.pack(side=LEFT)
+            boutSeePlacesScene.pack(side=LEFT)
+            boutSeeAllScene.pack(side=LEFT)
             fenCurrent = MENU
         else:
             labWelcMenu.pack_forget()
-            boutQuitMenu.pack_forget()
+            boutQuitMenuScene.pack_forget()
             boutHelp.pack_forget()
-            boutSeePlacesMenu.pack_forget()
-            boutSee.pack_forget()
+            boutSeePlacesScene.pack_forget()
+            boutSeeAllScene.pack_forget()
     elif win == HELP:
         if bol:
+            window.geometry(WIN_SIZE3)
             labHelp.pack()
             boutMenuStatic.pack(side=RIGHT)
             if fenPrevious is not None:
@@ -223,6 +272,7 @@ def pack_all(win, bol=True):
             boutHelp.pack_forget()
     elif win == AVAI:
         if bol:
+            window.geometry(WIN_SIZE1)
             labAvai.pack()
             boutMenuStatic.pack(side=RIGHT)
             if fenPrevious is not None and fenPrevious != AVAI:
@@ -266,7 +316,6 @@ def pack_all(win, bol=True):
                 boutReturnStatic.pack(side=RIGHT)
             fenCurrent = SEEA
         else:
-            window.geometry(WIN_SIZE1)
             labParking.pack_forget()
             boutMenuStatic.pack_forget()
             boutReturnStatic.pack_forget()
@@ -276,6 +325,10 @@ def pack_all(win, bol=True):
 
 # --- Functions navigate declare ---
 def navigate(id):
+    """
+    This function change the text of the label labAvai depending
+    on the number of the place the user is watching.
+    """
 
     global compt
 
@@ -307,8 +360,12 @@ def navigate(id):
     pack_all(AVAI)
 
 
-# --- Functions navigate declare ---
+# --- Functions see all declare ---
 def see_all():
+    """
+    This function is used to displas the 'X' or '0'
+    into the scene 'See all places'
+    """
 
     SIGNS = []
     for i in range(len(AVAILABILITIES)):
