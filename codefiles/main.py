@@ -28,38 +28,33 @@ window.geometry(WIN_SIZE1)  # init the size and position of the window
 myFont = tkinter.font.Font(family='Helvetica', size=15)
 
 # --- Label Menu declare ---
+"""This label is used on the main menu"""
 labWelcMenu = Label(
-    """This label is used on the main menu"""
     window, text=LABEL_MENU_WINDOW, fg=PANEL_TEXT_COLOR,
     background=PANEL_COLOR, font=myFont
 )
 
 
 # --- Button Menu declare ---
+"""This button close and delete the window. Only accesible by the menu scene"""
 boutQuitMenuScene = Button(
-    """
-    This button close and delete the window.
-    Only accesible by the menu scene
-    """
     window,
     text=QUIT_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
     font=myFont,
     command=window.destroy
 )
+"""This button lead to the navigation scene"""
 boutSeePlacesScene = Button(
-    """
-    This button lead to the navigation scene
-    """
     window,
     text=AVAIBILITY_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
     font=myFont,
     command=lambda: [pack_all(MENU, bol=False), pack_all(AVAI)]
 )
+"""
+This button lead to the sea all scene
+This one dont pack a new scene, this is done into the see_all() function
+"""
 boutSeeAllScene = Button(
-    """
-    This button lead to the sea all scene
-    This one dont pack a new scene, this is done into the see_all() function
-    """
     window,
     text=SEE_PLACE_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
     font=myFont,
@@ -68,21 +63,21 @@ boutSeeAllScene = Button(
 
 
 # --- Button static declare ---
+"""
+This button is packed into all scene exept the menu
+This button lead to the menu scene
+"""
 boutMenuStatic = Button(
-    """
-    This button is packed into all scene exept the menu
-    This button lead to the menu scene
-    """
     window,
     text=MENU_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
     font=myFont,
     command=lambda: [pack_all(fenCurrent, bol=False), pack_all(MENU)]
 )
+"""
+The return button allow the user to comme back at the previous scene
+if the previous was not the menu
+"""
 boutReturnStatic = Button(
-    """
-    The return button allow the user to comme back at the previous scene
-    if the previous was not the menu
-    """
     window,
     text=RETURN_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
     font=myFont,
@@ -90,10 +85,10 @@ boutReturnStatic = Button(
         pack_all(fenCurrent, bol=False), pack_all(fenPrevious),
     ]
 )
+"""
+Button which lead to the menu scene
+"""
 boutHelp = Button(
-    """
-    Button which lead to the menu scene
-    """
     window,
     text=HELP_BUTTON, fg=BUTTON_TEXT_COLOR, background=BUTTON_COLOR,
     font=myFont,
