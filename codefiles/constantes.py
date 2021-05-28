@@ -1,6 +1,8 @@
 """
-This file contain all the constant in the project
+This file contain all the constant in the project.
+Here are decleare all variables that don't use library.
 """
+
 ###############################################################################
 
 
