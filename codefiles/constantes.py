@@ -58,7 +58,7 @@ LABEL_HELP_WINDOW = """
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Press 'Avaibiliy' to see the availability of each places and reserved it.
+Press 'Avaibiliy' to see the availability of each places and reserve it.
 Use the arrows to navigate into the different places.
 
 Press 'See places' to have a global view of the situation of each place.
@@ -184,7 +184,7 @@ LABEL_PARKING_WINDOW = """
 91	92	93	94	95	96	97	98	99	100
 {}	{}	{}	{}	{}	{}	{}	{}	{}	{}
 
-                                        {} slots are available
+{} slots are available
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """

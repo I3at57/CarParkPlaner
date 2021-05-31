@@ -280,8 +280,6 @@ def pack_all(win, bol=True):
             boutPlus1.pack(side=LEFT)
             boutPlus10.pack(side=LEFT)
             boutGo100.pack(side=LEFT)
-            print(compt)
-            print(AVAILABILITIES[compt])
             if (AVAILABILITIES[compt] == 0) and (compt != -1):
                 boutReserve.pack(side=LEFT)
             elif (AVAILABILITIES[compt] == 1) and (compt != -1):
