@@ -409,12 +409,6 @@ def pack_all(win, bol=True):
     global fenPrevious
     global compt
 
-    if bol:
-        if fenCurrent == MENU:
-            fenPrevious = None
-        else:
-            passenPrevious = fenCurrent
-
     if win == MENU:
         if bol:
             window.geometry(WIN_SIZE1)
@@ -425,6 +419,7 @@ def pack_all(win, bol=True):
             if currentUser is not None:
                 boutSeePlacesScene.pack(side=LEFT)
             boutSeeAllScene.pack(side=LEFT)
+            fenPrevious = None
             fenCurrent = MENU
         else:
             labWelcMenu.pack_forget()
@@ -440,6 +435,8 @@ def pack_all(win, bol=True):
             boutMenuStatic.pack(side=RIGHT)
             if fenPrevious is not None:
                 boutReturnStatic.pack(side=RIGHT)
+            if fenCurrent != HELP:
+                fenPrevious = fenCurrent
             fenCurrent = HELP
         else:
             labHelp.pack_forget()
@@ -469,6 +466,8 @@ def pack_all(win, bol=True):
                 print(find_res(compt, find_pos_user(currentUser)))
                 if find_res(compt, find_pos_user(currentUser)) is not None:
                     boutStopReserve.pack(side=LEFT)
+            if fenPrevious != AVAI:
+                fenPrevious = fenCurrent
             fenCurrent = AVAI
         else:
             labAvai.pack_forget()
@@ -491,8 +490,8 @@ def pack_all(win, bol=True):
             boutMenuStatic.pack(side=RIGHT)
             if fenPrevious != HELP:
                 boutHelp.pack(side=RIGHT)
-            if fenPrevious is not None:
-                boutReturnStatic.pack(side=RIGHT)
+            if fenPrevious != SEEA:
+                fenPrevious = fenCurrent
             fenCurrent = SEEA
         else:
             labParking.pack_forget()
@@ -507,11 +506,15 @@ def pack_all(win, bol=True):
             boutMenuStatic.pack(side=RIGHT)
             if fenPrevious != HELP:
                 boutHelp.pack(side=RIGHT)
-            if fenPrevious is not None:
+            if (
+                fenPrevious is not None
+            ) and (fenCurrent != HELP and fenPrevious != LOGI):
                 boutReturnStatic.pack(side=RIGHT)
             boutLog.pack(side=RIGHT)
             entryLog.pack(side=RIGHT)
-            if fenCurrent is not LOGI:
+            if fenCurrent != LOGI:
+                fenPrevious = fenCurrent
+            if fenCurrent != LOGI:
                 fenCurrent = LOGI
         else:
             labLog.pack_forget()
@@ -520,6 +523,8 @@ def pack_all(win, bol=True):
             boutHelp.pack_forget()
             boutLog.pack_forget()
             entryLog.pack_forget()
+
+    print(fenCurrent, fenPrevious)
 
 
 # --- Functions navigate declare ---
@@ -601,5 +606,5 @@ def log_in():
 
     textVarLog.set(LABEL_LOG.format(str(str_username)))
 
-    # pack_all(LOGI, bol=False)
+    pack_all(LOGI, bol=False)
     pack_all(LOGI)
